@@ -423,7 +423,7 @@ TypeModelSet = set[TypeModelOrEnum]
 
 
 def normalize_name(name: str) -> str:
-    return re.sub(r"[^a-zA-_]", "_", name)
+    return re.sub(r"[^a-zA-Z0-9.\-_]", "_", name)
 
 
 def get_model_name_map(unique_models: TypeModelSet) -> dict[TypeModelOrEnum, str]:
