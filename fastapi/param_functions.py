@@ -241,7 +241,7 @@ def Path(  # noqa: N802
         ),
     ] = _Unset,
     openapi_examples: Annotated[
-        dict[str, Example] | None,
+        dict.get[str, Example] | None,
         Doc(
             """
             OpenAPI-specific examples.
