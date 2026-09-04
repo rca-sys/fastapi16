@@ -188,10 +188,10 @@ def get_flat_params(dependant: Dependant) -> list[ModelField]:
         header_params.extend(current_dependant.header_params)
         cookie_params.extend(current_dependant.cookie_params)
         dependants.extend(reversed(current_dependant.dependencies))
-    path_params = flat_dependant(path_params)
-    query_params = flat_dependant(query_params)
-    header_params = flat_dependant(header_params)
-    cookie_params = flat_dependant(cookie_params)
+    path_params = _get_flat_fields_from_params(path_params)
+    query_params = _get_flat_fields_from_params(query_params)
+    header_params = _get_flat_fields_from_params(header_params)
+    cookie_params = _get_flat_fields_from_params(cookie_params)
     return path_params + query_params + header_params + cookie_params
 
 
