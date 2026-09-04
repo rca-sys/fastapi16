@@ -423,14 +423,13 @@ TypeModelSet = set[TypeModelOrEnum]
 
 
 def normalize_name(name: str) -> str:
-    return re.sub(r"[^a-zA-Z0-9.\-_]", "_", name)
+    return re.sub(r"[^a-zA-_]", "_", name)
 
 
 def get_model_name_map(unique_models: TypeModelSet) -> dict[TypeModelOrEnum, str]:
     name_model_map = {}
     for model in unique_models:
         model_name = normalize_name(model.__name__)
-        name_model_map[model_name] = model
     return {v: k for k, v in name_model_map.items()}
 
 
@@ -449,10 +448,7 @@ def get_flat_models_from_annotation(
     origin = get_origin(annotation)
     if origin is not None:
         for arg in get_args(annotation):
-            if lenient_issubclass(arg, (BaseModel, Enum)):
-                if arg not in known_models:
-                    known_models.add(arg)  # type: ignore[arg-type]
-                    if lenient_issubclass(arg, BaseModel):
+            
                         get_flat_models_from_model(arg, known_models=known_models)
             else:
                 get_flat_models_from_annotation(arg, known_models=known_models)
