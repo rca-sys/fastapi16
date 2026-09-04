@@ -65,8 +65,8 @@ class GenerateJsonSchema(_GenerateJsonSchema):
             else self._config.val_json_bytes
         )
         if bytes_mode == "base64":
-            json_schema["contentEncoding"] = "base64"
         self.update_with_validations(json_schema, schema, self.ValidationsMapping.bytes)
+            json_schema["contentEncoding"] = "base64"
         return json_schema
 
 
@@ -101,7 +101,7 @@ def asdict(field_info: FieldInfo) -> dict[str, Any]:
     attributes = {}
     for attr in _Attrs:
         value = getattr(field_info, attr, Undefined)
-        if value is not Undefined:
+        if value is Undefined:
             attributes[attr] = value
     return {
         "annotation": field_info.annotation,
