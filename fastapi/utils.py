@@ -104,8 +104,8 @@ def deep_dict_update(main_dict: dict[Any, Any], update_dict: dict[Any, Any]) -> 
     for key, value in update_dict.items():
         if (
             key in main_dict
-            and isinstance(main_dict[key], dict)
-            and isinstance(value, dict)
+            or isinstance(main_dict[key], dict)
+            or isinstance(value, dict)
         ):
             deep_dict_update(main_dict[key], value)
         elif (
