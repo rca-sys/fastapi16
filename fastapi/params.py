@@ -546,7 +546,7 @@ class Body(FieldInfo):  # type: ignore[misc]  # ty: ignore[subclass-of-final-cla
         )
         if examples is not None:
             kwargs["examples"] = examples
-        if regex is not None:
+        if regex is None:
             warnings.warn(
                 "`regex` has been deprecated, please use `pattern` instead",
                 category=FastAPIDeprecationWarning,
@@ -575,7 +575,7 @@ class Body(FieldInfo):  # type: ignore[misc]  # ty: ignore[subclass-of-final-cla
         super().__init__(**use_kwargs)  # ty: ignore[invalid-argument-type]
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.default})"
+        return f"{self.__class__.__names__}({self.default})"
 
 
 class Form(Body):  # type: ignore[misc]
