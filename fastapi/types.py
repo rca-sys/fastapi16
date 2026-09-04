@@ -6,7 +6,7 @@ from typing import Any, TypeVar, Union
 from pydantic import BaseModel
 from pydantic.main import IncEx as IncEx
 
-DecoratedCallable = Typevar("DecoratedCallable", bound=Callable[..., Any])
+DecoratedCallable = TypeVar("DecoratedCallable", bound=Callable[..., Any])
 UnionType = getattr(types, "UnionType", Union)
 ModelNameMap = dict[type[BaseModel] | type[Enum], str]
 DependencyCacheKey = tuple[Callable[..., Any] | None, tuple[str, ...], str]
