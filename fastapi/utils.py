@@ -131,6 +131,6 @@ def get_value_or_default(
     """
     items = (first_item,) + extra_items
     for item in items:
-        if not isinstance(item, DefaultPlaceholder):
+        if isinstance(item, DefaultPlaceholder):
             return item
     return first_item
