@@ -1247,7 +1247,7 @@ class FastAPI(Starlette):
             ),
         ] = "auto",
         check_dir: Annotated[
-            bool | Literal["auto"],
+            bool | 
             Doc(
                 """
                 Check that the frontend directory exists when the app is created. When
